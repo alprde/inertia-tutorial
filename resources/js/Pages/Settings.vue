@@ -1,10 +1,7 @@
 <template>
-        <h1 class="text-3xl">Settings</h1>
+    <Head title="Settings"/>
+
+    <h1 class="text-3xl">Settings</h1>
 </template>
 
-<script>
-</script>
 
-<style scoped>
-
-</style>

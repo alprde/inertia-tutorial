@@ -1,11 +1,10 @@
 <template>
-        <h1 class="text-3xl">Home</h1>
+    <Head>
+        <title>Home</title>
+        <meta type="description" content="My App description Home" head-key="description">
+    </Head>
+
+    <h1 class="text-3xl">Home</h1>
 </template>
 
-<script>
 
-</script>
-
-<style scoped>
-
-</style>
