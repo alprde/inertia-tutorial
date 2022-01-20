@@ -21,10 +21,17 @@ Route::get('/', function () {
 
 Route::get('/users', function () {
     return Inertia::render('Users', [
-       'users' => User::paginate(10)->through(fn($users) => [
-           'id' => $users->id,
-           'name' => $users->name
-       ])
+       'users' => User::query()
+           ->when(Request::input('search'), function($query, $search){
+               $query->where('name', 'like', "%{$search}%");
+           })
+           ->paginate(10)
+           ->withQueryString()
+           ->through(fn($users) => [
+               'id' => $users->id,
+               'name' => $users->name
+           ]),
+        'filters' => Request::only(['search'])
     ]);
 });
 
