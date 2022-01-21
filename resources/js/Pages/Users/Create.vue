@@ -6,23 +6,20 @@
     <form @submit.prevent="submit" class="max-w-md mx-auto mt-8">
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="name">Name</label>
-            <input v-model="form.name" class="border border-gray-400 p-2 w-full"
-                   type="text"
-            >
+            <input v-model="form.name" class="border border-gray-400 p-2 w-full" type="text" required>
+            <div v-if="errors.name" v-text="errors.name" class="text-red-500 text-xs mt-1"></div>
         </div>
 
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email">Email</label>
-            <input v-model="form.email" class="border border-gray-400 p-2 w-full"
-                   type="email"
-            >
+            <input v-model="form.email" class="border border-gray-400 p-2 w-full" type="email" required>
+            <div v-if="errors.email" v-text="errors.email" class="text-red-500 text-xs mt-1"></div>
         </div>
 
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="password">Password</label>
-            <input v-model="form.password" class="border border-gray-400 p-2 w-full"
-                   type="password"
-            >
+            <input v-model="form.password" class="border border-gray-400 p-2 w-full" type="password" required>
+            <div v-if="errors.password" v-text="errors.password" class="text-red-500 text-xs mt-1"></div>
         </div>
 
         <div class="mb-6">
@@ -34,6 +31,10 @@
 <script setup>
 import {reactive} from "vue";
 import {Inertia} from "@inertiajs/inertia";
+
+defineProps({
+    errors: Object
+})
 
 let form = reactive({
     name: '',
